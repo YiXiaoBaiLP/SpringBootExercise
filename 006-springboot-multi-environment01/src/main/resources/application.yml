@@ -1,0 +1,6 @@
+# 主配置文件，用来控制其他的配置文件
+
+# 用来激活某一个配置文件来使用
+spring:
+  profiles:
+    active: product
