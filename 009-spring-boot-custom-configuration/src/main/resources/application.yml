@@ -1,0 +1,12 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+school:
+  name: "bjpowernode"
+  websit: "http://www.bjpowernode.com"
+
+abc:
+  name: "abc"
+  websit: "http://www.abc.com"
