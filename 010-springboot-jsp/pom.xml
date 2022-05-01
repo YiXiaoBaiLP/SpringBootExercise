@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.7</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>buzz.yixiaobai.springbootjsp</groupId>
+    <artifactId>springboot-jsp</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>010-springboot-jsp</name>
+    <description>010-springboot-jsp</description>
+    <properties>
+        <java.version>11</java.version>
+    </properties>
+    <dependencies>
+        <!-- Spring Boot Web启动依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- 引入SpringBoot内嵌Tomcat对jsp的解析依赖，不添加解析不了jsp -->
+        <!-- 仅仅只是展示Jsp页面，只添加以下一个依赖 -->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!--
+            SpringBoot 项目默认推荐使用的前端引擎是thymeleaf
+            现在我们需要使用SpringBoot 继承 JSP，手动指定 JSP 最后的编译路径
+            而且 SpringBoot 集成 JSP编译JSP的路径是 SpringBoot规定好的位置
+            META-INF/resources
+        -->
+        <resources>
+            <resource>
+                <!-- 源文件夹 -->
+                <directory>src/main/webapp</directory>
+                <!-- 指定编译到 META-INF/resources -->
+                <targetPath>META-INF/resources</targetPath>
+                <!-- 指定源文件夹中的哪些资源要编译进行 -->
+                <includes>
+                    <!-- 文件类型 -->
+                    <!-- 表示所有文件 -->
+                    <include>*.*</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <!-- Spring Boot 自带的打包插件 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
