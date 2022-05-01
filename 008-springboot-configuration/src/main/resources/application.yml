@@ -1,0 +1,9 @@
+#  设置默认端口号
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+school:
+  name: "bjpowernode"
+  websit: "http://www.bjpowernode.com"
