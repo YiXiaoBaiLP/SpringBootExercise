@@ -1,0 +1,6 @@
+# 设置tomcat端口号
+server:
+  port: 8001
+  # 添加一个上下文根
+  servlet:
+    context-path: /springboot
