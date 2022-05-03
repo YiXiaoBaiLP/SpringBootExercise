@@ -1,0 +1,17 @@
+# 设置tomcat端口号
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# 设置dubbo配置
+spring:
+  application:
+    name: 025-springboot-dubbo-ssm-consumer
+  dubbo:
+    registry: zookeeper://192.168.15.127:2181
+  # 配置视图解析器
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
