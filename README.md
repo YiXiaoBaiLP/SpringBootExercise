@@ -46,3 +46,63 @@
      - 例如：删除使用的注解 ` @DeleteMapper()`
        			查询使用的注解 `@GetMapper()`
         			修改使用的注解 `@PutMapper()`
+
+### 019-springboot-redis
+
+#### springboot集成Redis
+
+- 添加Redis数据类型的依赖
+
+  ```xml
+  <!-- SpringBoot 集成Redis的起步依赖 -->
+  <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-redis</artifactId>
+  </dependency>
+  ```
+
+- 在SpringBoot核心配置文件中添加Redis配置
+
+```yml
+spring:
+  redis:
+    host: 192.168.15.127
+    port: 6379
+    password: ******
+
+```
+
+- 服务层中使用Redis存取值
+
+  ```java
+  /**
+   * @author yixiaobai
+   * @create 2022/05/03 下午7:40
+   */
+  @Service
+  public class StudentServiceImpl implements StudentService {
+      @Autowired // RedisTemplate：由 spring-data-redis 提供支持
+      private RedisTemplate<Object, Object> redisTemplate;
+      /**
+       * Redis 中存入数据
+       * @param key
+       * @param value
+       */
+      @Override
+      public void put(String key, String value) {
+          redisTemplate.opsForValue().set(key, value);
+      }
+      /**
+       *
+       * @param key
+       * @return
+       */
+      @Override
+      public String get(String key) {
+          String value = redisTemplate.opsForValue().get(key).toString();
+          return value;
+      }
+  }
+  ```
+
+  
