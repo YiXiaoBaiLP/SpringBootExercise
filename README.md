@@ -122,15 +122,14 @@ spring:
      - 配置服务消费者核心配置文件
 
 ### 23～25. SpringBoot集成Dubbo、Redis、MyBatis、Spring、SpringMVC、JSP
-
-	- **接口工程：**存放实体bean和业务接口
- - **服务提供者：**它是一个SpringBoot框架Web项目，集成MyBatis、Redis
+ - **接口工程：** 存放实体bean和业务接口
+ - **服务提供者：** 它是一个SpringBoot框架Web项目，集成MyBatis、Redis
    - 添加依赖：MyBatis依赖、MySql驱动、Dubbo依赖、zookeeper依赖、Redis依赖、接口工程
    - 配置SpringBoot核心配置文件
      - 配置连接数据库
      - 配置连接Redis
      - 配置Dubbo
- - **服务消费者：**它是一个SpringBoot框架Web项目，集成JSP、Dubbo
+ - **服务消费者：** 它是一个SpringBoot框架Web项目，集成JSP、Dubbo
    - 添加依赖：Dubbo依赖、zookeeper依赖、解析JSP页面的依赖、接口工程
    - 配置SpringBoot核心配置文件
      - 配置视图解析器
