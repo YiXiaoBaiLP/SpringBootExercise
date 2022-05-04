@@ -179,3 +179,47 @@ spring:
 
  - 定义一个拦截器，实现 `HandlerInterceptor`接口， **配置拦截的规则**
  - 创建一个配置类（即：在SpringMVC配置文件中使用 mvc:interceptors标签）， **配置拦截的请求**
+
+### 031-springboot-servlet（了解即可）
+
+##### SpringBoot中是使用servlet
+
+- **第一种方式 ：** 注解方式 -> @WebServlet， @ServletCompanscan
+
+1. Servlet的配置类，需要集成 HttpServlet方法，并重写doGet()、doPost()方法，实例：
+
+```java
+/**
+ * @author yixiaobai
+ * @create 2022/05/04 下午4:22
+ */
+@WebServlet(urlPatterns = "/myservlet") // 定义请求路径
+public class MyServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.getWriter().println("My SpringBoot Servlet-1");
+        resp.getWriter().flush();
+        resp.getWriter().close();
+    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
+    }
+}
+```
+
+2. 在主类中开启扫描，实例：
+
+```java
+@SpringBootApplication // 开启Spring配置
+@ServletComponentScan(basePackages = "buzz.yixiaobai.springboot.servlet")
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+```
+
+- **第二种方式：**
+  - 通过配置类注册组件的方式，使用功能@Bean注解
