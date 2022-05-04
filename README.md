@@ -172,3 +172,10 @@ spring:
 
 - 修改logo
   - 在 `src/main/resources/banner.txt` 目录下创建文件即可，文件中写的内容会显示在启动log中
+
+### 030-springboot-interceptor
+
+##### SpringBoot使用拦截器
+
+	- 定义一个拦截器，实现 `HandlerInterceptor`接口，**配置拦截的规则**
+	- 创建一个配置类（即：在SpringMVC配置文件中使用 mvc:interceptors标签），**配置拦截的请求**
