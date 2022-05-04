@@ -177,5 +177,5 @@ spring:
 
 ##### SpringBoot使用拦截器
 
-	- 定义一个拦截器，实现 `HandlerInterceptor`接口，**配置拦截的规则**
-	- 创建一个配置类（即：在SpringMVC配置文件中使用 mvc:interceptors标签），**配置拦截的请求**
+ - 定义一个拦截器，实现 `HandlerInterceptor`接口， **配置拦截的规则**
+ - 创建一个配置类（即：在SpringMVC配置文件中使用 mvc:interceptors标签）， **配置拦截的请求**
