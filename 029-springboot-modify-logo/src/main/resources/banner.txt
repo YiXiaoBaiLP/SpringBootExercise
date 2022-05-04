@@ -1,0 +1,26 @@
+
+
+YYYYYYY       YYYYYYY  iiii  XXXXXXX       XXXXXXX  iiii                                    BBBBBBBBBBBBBBBBB                       iiii
+Y:::::Y       Y:::::Y i::::i X:::::X       X:::::X i::::i                                   B::::::::::::::::B                     i::::i
+Y:::::Y       Y:::::Y  iiii  X:::::X       X:::::X  iiii                                    B::::::BBBBBB:::::B                     iiii
+Y::::::Y     Y::::::Y        X::::::X     X::::::X                                          BB:::::B     B:::::B
+YYY:::::Y   Y:::::YYYiiiiiii XXX:::::X   X:::::XXXiiiiiii   aaaaaaaaaaaaa     ooooooooooo     B::::B     B:::::B  aaaaaaaaaaaaa   iiiiiii
+   Y:::::Y Y:::::Y   i:::::i    X:::::X X:::::X   i:::::i   a::::::::::::a  oo:::::::::::oo   B::::B     B:::::B  a::::::::::::a  i:::::i
+    Y:::::Y:::::Y     i::::i     X:::::X:::::X     i::::i   aaaaaaaaa:::::ao:::::::::::::::o  B::::BBBBBB:::::B   aaaaaaaaa:::::a  i::::i
+     Y:::::::::Y      i::::i      X:::::::::X      i::::i            a::::ao:::::ooooo:::::o  B:::::::::::::BB             a::::a  i::::i
+      Y:::::::Y       i::::i      X:::::::::X      i::::i     aaaaaaa:::::ao::::o     o::::o  B::::BBBBBB:::::B     aaaaaaa:::::a  i::::i
+       Y:::::Y        i::::i     X:::::X:::::X     i::::i   aa::::::::::::ao::::o     o::::o  B::::B     B:::::B  aa::::::::::::a  i::::i
+       Y:::::Y        i::::i    X:::::X X:::::X    i::::i  a::::aaaa::::::ao::::o     o::::o  B::::B     B:::::B a::::aaaa::::::a  i::::i
+       Y:::::Y        i::::i XXX:::::X   X:::::XXX i::::i a::::a    a:::::ao::::o     o::::o  B::::B     B:::::Ba::::a    a:::::a  i::::i
+       Y:::::Y       i::::::iX::::::X     X::::::Xi::::::ia::::a    a:::::ao:::::ooooo:::::oBB:::::BBBBBB::::::Ba::::a    a:::::a i::::::i
+    YYYY:::::YYYY    i::::::iX:::::X       X:::::Xi::::::ia:::::aaaa::::::ao:::::::::::::::oB:::::::::::::::::B a:::::aaaa::::::a i::::::i
+    Y:::::::::::Y    i::::::iX:::::X       X:::::Xi::::::i a::::::::::aa:::aoo:::::::::::oo B::::::::::::::::B   a::::::::::aa:::ai::::::i
+    YYYYYYYYYYYYY    iiiiiiiiXXXXXXX       XXXXXXXiiiiiiii  aaaaaaaaaa  aaaa  ooooooooooo   BBBBBBBBBBBBBBBBB     aaaaaaaaaa  aaaaiiiiiiii
+
+
+
+
+
+
+
+

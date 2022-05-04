@@ -45,7 +45,7 @@
 
      - 例如：删除使用的注解 ` @DeleteMapper()`
        			查询使用的注解 `@GetMapper()`
-        			修改使用的注解 `@PutMapper()`
+           			修改使用的注解 `@PutMapper()`
 
 ### 019-springboot-redis
 
@@ -134,3 +134,41 @@ spring:
    - 配置SpringBoot核心配置文件
      - 配置视图解析器
      - 配置Dubbo
+
+### 026-springboot-java-1（了解即可）
+
+- SpringBoot 创建Java工程（方式一）：通过SpringBoot容器获取
+
+### 027-springboot-java-2（了解即可）
+
+- SpringBoot 创建Java工程（方式二）：通过实现`CommandLineRunner`重写 `run()` 方法获取
+
+### 028-springboot-close-logo
+
+- **关闭SpringBoot启动logo**
+
+  - ```java
+    @SpringBootApplication
+    public class Application {
+        public static void main(String[] args) {
+            // SpringApplication.run(Application.class, args);
+            /*
+            将 SpringApplication.run(Application.class, args) 方法拆分
+                1、先获取 SpringApplication 对象
+                2、设置SpringApplication对象的属性 setBannerMode(Banner.Mode.OFF);
+                3、启动SpringApplication.run(args); 容器
+             */
+            // 获取启动入口SpringBoot类
+            SpringApplication springApplication = new SpringApplication(Application.class);
+            // 设置它的属性
+            springApplication.setBannerMode(Banner.Mode.OFF);
+            // 调用启动类
+            springApplication.run(args);
+        }
+    }
+    ```
+
+### 029-springboot-modify-logo
+
+- 修改logo
+  - 在 `src/main/resources/banner.txt` 目录下创建文件即可，文件中写的内容会显示在启动log中
