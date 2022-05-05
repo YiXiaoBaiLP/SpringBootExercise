@@ -223,3 +223,96 @@ public class Application {
 
 - **第二种方式：**
   - 通过配置类注册组件的方式，使用功能@Bean注解
+
+### 033-springboot-filter-1（使用注解的方式）
+
+##### SpringBoot使用filter过滤器
+
+- 自定义一个过滤器，注意实现的Filter类为javax.servlet包中
+
+```java
+/**
+ * 自定义过滤器
+ * @author yixiaobai
+ * @create 2022/05/05 下午11:12
+ */
+@WebFilter(urlPatterns = "/myfilter")
+public class MyFilter implements javax.servlet.Filter {
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        System.out.println("-------------------------------- 已进入过滤器 ------------------------------------");
+
+        filterChain.doFilter(servletRequest, servletResponse);
+    }
+}
+```
+
+- 在客户端中使用，**需要开启扫描器**
+
+```java
+@SpringBootApplication
+@ServletComponentScan(basePackages = "buzz.yixiaobai.springboot.filter")
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+}
+```
+
+### 034-springboot-filter-2（使用配置类的方式）
+
+##### SpringBoot中使用Filter过滤器
+
+- 自定义过滤器(Filter)，**实现的包为javax.servlet.Filter**
+
+```java
+/**
+ * 自定义过滤器
+ * @author yixiaobai
+ * @create 2022/05/05 下午11:25
+ */
+public class MyFilter implements Filter {
+
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        System.out.println("--------------- 我进入过滤器了 ---------------------");
+        filterChain.doFilter(servletRequest, servletResponse);
+    }
+}
+```
+
+- **Filter配置类**
+
+```java
+/**
+ * @author yixiaobai
+ * @create 2022/05/05 下午11:28
+ */
+@Configuration // 定义此类为配置类
+public class FilterConfig {
+
+    @Bean
+    public FilterRegistrationBean myFilterRegistrationBean() {
+        // 将自己的过滤器传入进去
+        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new MyFilter());
+
+        // 添加过滤路径，可以匹配/user、/user/detail、/user/select/detail等
+        filterRegistrationBean.addUrlPatterns("/user/*");
+        return filterRegistrationBean;
+    }
+}
+```
+
+- **客户端类，不需要做任何配置**
+
+```java
+@SpringBootApplication
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+```
+
