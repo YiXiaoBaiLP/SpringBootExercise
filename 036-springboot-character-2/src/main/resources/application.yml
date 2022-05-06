@@ -1,0 +1,7 @@
+# 设置请求响应字符编码
+server:
+  servlet:
+    encoding:
+      force: true
+      enabled: true
+      charset: UTF-8

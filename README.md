@@ -316,3 +316,136 @@ public class Application {
 }
 ```
 
+### 035-springboot-character-1（使用Java配置类的方式）
+
+##### 修改字符编码
+
+1. 要在Servlet中统一浏览器编码
+
+```java
+/**
+ * @author yixiaobai
+ * @create 2022/05/06 上午12:20
+ */
+@WebServlet(urlPatterns = "/myservlet")
+public class MyServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.getWriter().println("世界你好，Hello World!");
+        // 统一设置浏览器编码格式
+        resp.setContentType("text/html;character=utf-8");
+        resp.getWriter().flush();
+        resp.getWriter().close();
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
+    }
+}
+```
+
+2. 创建过滤器配置类，并指定编码
+
+```java
+/**
+ * @author yixiaobai
+ * @create 2022/05/06 上午12:31
+ */
+@Configuration
+public class SystemConfig {
+    @Bean
+    public FilterRegistrationBean characterEncodingFilterRegistrationBean() {
+        // 创建字符编码过滤器
+        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+        // 强制使用指定字符编码
+        characterEncodingFilter.setForceEncoding(true);
+        // 设置指定字符编码
+        characterEncodingFilter.setEncoding("utf-8");
+
+        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+        // 设置字符编码过滤器
+        filterRegistrationBean.setFilter(characterEncodingFilter);
+        // 设置字符编码器过滤路径
+        filterRegistrationBean.addUrlPatterns("/*");
+
+        return filterRegistrationBean;
+    }
+}
+```
+
+3. 修改全局配置类 **application.yml**
+
+```yml
+server:
+  servlet:
+    encoding:
+      enabled: false
+```
+
+4. 客户端中引用
+
+```java
+@SpringBootApplication
+@ServletComponentScan(basePackages = "buzz.yixiaobai.springboot.servlet") // 扫描Servlet
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+```
+
+### 036-springboot-character-2 （使用全局配置类）
+
+##### 修改中文乱码的问题
+
+1. 修改 application.yml 全局配置类
+
+```yml
+# 设置请求响应字符编码
+server:
+  servlet:
+    encoding:
+      force: true
+      enabled: true
+      charset: UTF-8
+```
+
+2. 自定义Servlet类
+
+```java
+/**
+ * @author yixiaobai
+ * @create 2022/05/06 上午1:02
+ */
+@WebServlet(urlPatterns = "/myservlet")
+public class MyServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.getWriter().println("世界你好，Hello World！");
+        // 配置内容类型
+        resp.setContentType("text/html");
+        resp.getWriter().flush();
+        resp.getWriter().close();
+    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
+    }
+}
+```
+
+3. 客户端中使用
+
+```java
+@SpringBootApplication
+@ServletComponentScan(basePackages = "buzz.yixiaobai.springboot.servlet") // 开启扫描Servlet
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+}
+```
+
