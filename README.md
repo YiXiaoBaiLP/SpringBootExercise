@@ -453,6 +453,8 @@ public class Application {
 
 ##### SpringBoot 打War包
 
+- **SpringBoot中配置的端口号就会失效，需要在Tomcat中配置**
+
 - 第一步：修改pom.xml
 
 ```xml
@@ -504,6 +506,40 @@ public class Application extends SpringBootServletInitializer {
         return builder.sources(Application.class);
     }
 }
+```
+
+### 038-springboot-jar
+
+- 配置pom.xml文件，编译插件必须要选择`<version>1.4.2.RELEASE</version>` 1.5以上的编译插件不支持jsp的打包
+
+```xml
+ <build>
+     <!-- 指定包名 -->
+     <finalName>springboot</finalName>
+     <!-- 指定JSP的编译路径 -->
+     <resources>
+         <resource>
+             <directory>src/main/webapp</directory>
+             <targetPath>META-INF/resources</targetPath>
+             <includes>
+                 <include>*.*</include>
+             </includes>
+         </resource>
+         <resource>
+             <directory>src/main/resources</directory>
+             <includes>
+                 <include>**/*.*</include>
+             </includes>
+         </resource>
+     </resources>
+     <plugins>
+         <plugin>
+             <groupId>org.springframework.boot</groupId>
+             <artifactId>spring-boot-maven-plugin</artifactId>
+             <version>1.4.2.RELEASE</version>
+         </plugin>
+     </plugins>
+</build>
 ```
 
 
