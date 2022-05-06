@@ -542,5 +542,48 @@ public class Application extends SpringBootServletInitializer {
 </build>
 ```
 
+### 039-springboot-logback
 
+##### 使用 logback 记录日志
+
+1. `pom.xml` 文件中添加依赖
+   - 由于 springboot 框架已经集成 logback包，所有我们不需要添加
+   - 只需要添加 `lombok` 即可
+
+```xml
+<!-- 添加Slf4j依赖 -->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+</dependency>
+```
+
+2. 在 `src/mian/resources` 目录下添加 [logback-spring.xml ](./039-springboot-logback/src/main/resources/logback-spring.xml)配置文件以及详细说明
+
+3. 使用log记录日志案例
+
+```java
+/**
+ * @author yixiaobai
+ * @create 2022/05/06 下午8:36
+ */
+@Controller
+@Slf4j // 有 lombok 提供注解，来记录日志
+public class StudentController {
+
+    @Autowired
+    private StudentService studentService;
+
+    @RequestMapping("/student/count")
+    public @ResponseBody String studentCount() {
+        log.trace("trace：查询当前学生总人数");
+        log.debug("debug：查询当前学生总人数");
+        log.info("info：查询当前学生总人数");
+        log.warn("warn：查询当前学生总人数");
+        log.error("error：查询当前学生总人数");
+        Integer studentCount = studentService.queryStudentCount();
+        return "学生的总人数为：" + studentCount ;
+    }
+}
+```
 
