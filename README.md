@@ -449,3 +449,62 @@ public class Application {
 }
 ```
 
+### 037-springboot-war
+
+##### SpringBoot 打War包
+
+- 第一步：修改pom.xml
+
+```xml
+    <!-- 指定打war包 -->
+    <packaging>war</packaging>
+```
+
+- 第二步：在build标签中指定war名称
+
+```xml
+<build>
+    <!-- 指定打war包的名称 -->
+    <finalName>springboot</finalName>
+
+    <!-- 编译JSP -->
+    <resources>
+        <resource>
+            <directory>src/main/webapp</directory>
+            <targetPath>META-INF/resources</targetPath>
+            <includes>
+                <include>**/*.*</include>
+            </includes>
+        </resource>
+    </resources>
+	<!-- SpringBoot 工程自带 -->
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+    </plugins>
+</build>
+```
+
+- **第三步：在启动类中需要继承SpringBootServletInitializer类，并重写configure方法**
+
+```java
+@SpringBootApplication
+public class Application extends SpringBootServletInitializer {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        // 参数为当前springboot 启动类
+        // 构建新资源
+        return builder.sources(Application.class);
+    }
+}
+```
+
+
+
