@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>使用js及以静态资源</title>
+</head>
+
+<body>
+<script type="text/javascript" th:src="@{/js/jquery-3.6.0.min.js}"></script>
+<script>
+    $(function(){
+        alert("我进来了");
+        alert($("#username").val());
+    })
+</script>
+<input type="text" id="username" value="8888"/>
+<img th:src="@{/img/001.jpg}" />
+</body>
+</html>
