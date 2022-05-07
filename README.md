@@ -587,3 +587,52 @@ public class StudentController {
 }
 ```
 
+### 040-springboot-thymeleaf-first
+
+### 041-springboot-thymeleaf-second
+
+##### 使用thymeleaf模版
+
+- 导入依赖
+
+```xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-thymeleaf</artifactId>
+</dependency>
+```
+
+- 关闭缓存
+
+```yml
+spring:
+  thymeleaf:
+    # 关闭 Thymeleaf 的缓存
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+```
+
+![image-20220507011438509](./041-springboot-thymeleaf-second/src/main/resources/static/image-20220507011438509.png)
+
+![img.png](./041-springboot-thymeleaf-second/src/main/resources/static/img.png)
+
+- 引入thymeleaf标签到html中
+
+```html
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Title</title>
+</head>
+<body>
+<h3 th:text="${data}">xxx</h3>
+</body>
+</html>
+```
+
+### 042-springboot-thymeleaf-expression
+
+##### 使用Thymeleaf表达式展示数据
+

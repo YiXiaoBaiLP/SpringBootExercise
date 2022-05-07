@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户详细信息</title>
+</head>
+<body>
+<!-- EL 表达式的使用方式 -->
+<h1>标准变量表达式：${}（推荐这种写法）</h1>
+<div>
+    用户的ID：<span th:text="${user.id}"/> <br/>
+    用户的姓名：<span th:text="${user.userName}" /> <br/>
+    用户的年龄：<span th:text="${user.age}" /> <br/>
+</div>
+
+<h1>选择变量表达式（星号表达式）：*{}（不推荐这种写法）</h1>
+<h3>*{}必须使用th:object属性来绑定这个对象</h3>
+<h3>在div子标签中使用*来代替绑定的对象${user}</h3>
+<div th:object="${user}">
+    用户编号：<span th:text="*{id}"></span><br/>
+    用户姓名：<span th:text="*{userName}"/> <br/>
+    用户年龄：<span th:text="*{age}"/> <br/>
+</div>
+
+<h1>标签变量表达式与选择变量表达式的混合使用（不推荐这种写法）</h1>
+用户ID：<span th:text="*{user.id}"/> <br/>
+用户姓名：<span th:text="*{user.userName}"/> <br/>
+用户年龄：<span th:text="*{user.age}"/> <br/>
+</body>
+</html>

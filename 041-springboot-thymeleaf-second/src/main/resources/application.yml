@@ -1,0 +1,6 @@
+spring:
+  thymeleaf:
+    # 关闭 Thymeleaf 的缓存
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
