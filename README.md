@@ -1,5 +1,9 @@
 # SpringBoot 实战
 
+## 参考视频B站UP主[女毒v](https://www.bilibili.com/video/BV1rv411k7RD)的SpringBoot教学视频
+
+## [学习进度](https://www.bilibili.com/video/BV1rv411k7RD?p=84&spm_id_from=333.880.my_history.page.click)---->暂停2022/05/08
+
 ### 017-springboot-springmvc
 
 - 主要说明了注解：@Controller、@RestController、@RequestMapping、@GetMapping、@PostMapping、@DeleteMapper、@PutMapping
